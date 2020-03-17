@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Slideshow</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+              </header>
+     <div class="container-fluid">
+          <header>
+          <div class="container">
+               <img src="logo.png" alt="">
+          </div>
+          </header>
+          <div class="container select">
+               <select class="selettore" name="">
+               <option value="">Scegli un genere</option>
+               <option value="pop">Pop</option>
+               <option value="rock">Rock</option>
+               <option value="jazz">Jazz</option>
+               <option value="metal">Metal</option>
+               </select>
+          </div>
+          <div class="container cd">
+               <div class="itemcontainer">
+
+
+
+                    <!-- <div class="mixcontainer">
+                         <div class="mixcontiner-1">
+                              <div class="image cellmix2hover">
+                                   <img src="https://resources.tidal.com/images/20d2d836/9921/4bcd/b1fa/4ff90e114a8f/320x320.jpg" alt="">
+                              </div>
+                         </div>
+                              <div class="descrizionimix">
+                                    <a class="playlist_write2" href="#">Avicii (01)</a>
+                                    <a  class="playlist_write3" href="#">AVICII</a>
+                                    <a  class="playlist_write4" href="#">AVICII</a>
+                              </div>
+                    </div> -->
+
+
+
+
+
+
+
+
+               </div>
+          </div>
+
+     </div>
+
+
+
+     <script id="template-mix" type="text/x-handlebars-template">
+          <div class="mixcontainer" data-genere="{{genereMusicale}}">
+               <div class="mixcontiner-1">
+                    <div class="image cellmix2hover">
+                         <img src="{{immagineCover}}" alt="{{titoloAlbum}}">
+                    </div>
+               </div>
+                    <div class="descrizionimix">
+                          <a class="playlist_write2" href="#">{{artista}}</a>
+                          <a  class="playlist_write3" href="#">{{titoloAlbum}}</a>
+                          <a  class="playlist_write4" href="#">{{annoDiUscita}}</a>
+                    </div>
+          </div>
+
+     </script>
+
+    <script src="js/main.js" charset="utf-8"></script>
+  </body>
+</html>

@@ -1,16 +1,15 @@
-$(document).ready(function () {
+var source = $('#template-cd').html();
+var template = Handlebars.compile(source);
 
-var source = $('#template-mix').html();
-var templateAlbum = Handlebars.compile(source);
 
-$('.selettore').change(function () {
-     var valore = $(this).val().toLowerCase();
-     console.log(valore); //debug
-     if(valore == '') {
-          $('.mixcontainer').show();
+$('.form-control').change(function () {
+     var scelta = $('.form-control').val().toLowerCase();
+     console.log(scelta);
+     if(scelta == '') {
+          $('.mc-playlist-item').show();
      }else {
-          $('.mixcontainer').each(function () {
-               if (valore == $(this).data('genere').toLowerCase()) {
+          $('.mc-playlist-item').each(function () {
+               if (scelta == $(this).data('genere')) {
                     $(this).show()
                }else {
                     $(this).hide()
@@ -19,40 +18,38 @@ $('.selettore').change(function () {
           });
 
      };
-
 });
 
-$.ajax({
-     url : 'https://flynn.boolean.careers/exercises/api/array/music',
-     method: 'GET' ,
-     success: function (data) {
-          var albumMix = data.response; //Fisso in un array tutti gli oggetti in entrata ajax.
-          // console.log(albumMix); //Debug
-          for (var i = 0; i < albumMix.length; i++) {
-               /* In questo modo vado a crearmi [i] array quanti sono gli oggetti
-               definiti nell'array in entrata dalla chiamata Ajax. */
-               var albumMixSingle = albumMix[i];
-               console.log(albumMixSingle); //Debug
-               var albumMixSingleTemplate = { // dichiaro dentro un oggetto le informazioni che userò come template per Handlebars
-                    immagineCover : albumMixSingle.poster,
-                    artista : albumMixSingle.author,
-                    titoloAlbum : albumMixSingle.title,
-                    annoDiUscita: albumMixSingle.year,
-                    genereMusicale: albumMixSingle.genre
-               }
-               console.log(albumMixSingleTemplate);
-               var html = templateAlbum(albumMixSingleTemplate);
 
-               $('.itemcontainer').append(html);
+
+$.ajax({
+     url: 'https://flynn.boolean.careers/exercises/api/array/music',
+     method: 'GET',
+     success: function (data) {
+          // console.log(data.response);
+          var objectsArrayAlbum = data.response; //Array di oggetti
+          // console.log(objectsArrayAlbum);
+          for (var i = 0; i < objectsArrayAlbum.length; i++) {
+               var objectAlbum = objectsArrayAlbum[i]; //prendo gli oggetti uno per uno
+               // console.log(objectAlbum);
+               var datiObjectArrayTemplate = {
+                    titoloAlbum : objectAlbum.title,
+                    annoAlbum: objectAlbum.year,
+                    artistaAlbum: objectAlbum.author,
+                    immagineAlbum: objectAlbum.poster,
+                    genereAlbum: objectAlbum.genre.toLowerCase(),
+               }
+               console.log(datiObjectArrayTemplate);
+               var html = template(datiObjectArrayTemplate);
+               $('.mc-playlist-cont').append(html);
           };
+
+
+
      },
      error: function () {
-               alert('error');
-          }
-
-})
-
-
+          alert('error');
+     }
 
 
 });

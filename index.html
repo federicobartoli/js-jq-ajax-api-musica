@@ -1,79 +1,71 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Slideshow</title>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-              </header>
-     <div class="container-fluid">
+     <head>
+          <meta charset="utf-8">
+          <title>boolSpotify ajax</title>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+          <link rel="stylesheet" href="css/style.css">
+          <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+     </head>
+     <body>
+
+
+     <div class="container-fluid mc-black-fluid">
           <header>
-          <div class="container">
-               <img src="logo.png" alt="">
-          </div>
-          </header>
-          <div class="container select">
-               <select class="selettore" name="">
-               <option value="">Scegli un genere</option>
-               <option value="pop">Pop</option>
-               <option value="rock">Rock</option>
-               <option value="jazz">Jazz</option>
-               <option value="metal">Metal</option>
-               </select>
-          </div>
-          <div class="container cd">
-               <div class="itemcontainer">
-
-
-
-                    <!-- <div class="mixcontainer">
-                         <div class="mixcontiner-1">
-                              <div class="image cellmix2hover">
-                                   <img src="https://resources.tidal.com/images/20d2d836/9921/4bcd/b1fa/4ff90e114a8f/320x320.jpg" alt="">
+               <div class="row">
+                    <div class="container-fluid mc-black">
+                         <div class="row mc-header">
+                              <div class="col-6 mc-sx-header">
+                                   <div class="logodiv">
+                                        <img src="img/logotidal.png" alt="">
+                                   </div>
+                              </div>
+                              <div class="col-6 mc-dx-header">
+                                   <select class="form-control form-control-sm" name="">
+                                   <option value="">Seleziona genere</option>
+                                   <option value="pOp">Pop</option>
+                                   <option value="rOck">Rock</option>
+                                   <option value="jaZz">Jazz</option>
+                                   <option value="Metal">Metal</option>
+                                   </select>
                               </div>
                          </div>
-                              <div class="descrizionimix">
-                                    <a class="playlist_write2" href="#">Avicii (01)</a>
-                                    <a  class="playlist_write3" href="#">AVICII</a>
-                                    <a  class="playlist_write4" href="#">AVICII</a>
-                              </div>
-                    </div> -->
+                    </div>
+               </div>
+          </header>
+          <div class="row">
+               <div class="container-fluid mc-sfondo">
+                    <div class="col-12 mc-playlist">
+
+                    <div class="mc-title text-center text-white "><h1>Our Playlist</h1></div>
+                    <div class="mc-playlist-cont"></div>
 
 
 
 
-
-
-
-
+                    </div>
                </div>
           </div>
-
      </div>
 
 
 
-     <script id="template-mix" type="text/x-handlebars-template">
-          <div class="mixcontainer" data-genere="{{genereMusicale}}">
-               <div class="mixcontiner-1">
-                    <div class="image cellmix2hover">
-                         <img src="{{immagineCover}}" alt="{{titoloAlbum}}">
-                    </div>
-               </div>
-                    <div class="descrizionimix">
-                          <a class="playlist_write2" href="#">{{artista}}</a>
-                          <a  class="playlist_write3" href="#">{{titoloAlbum}}</a>
-                          <a  class="playlist_write4" href="#">{{annoDiUscita}}</a>
-                    </div>
-          </div>
 
-     </script>
+          <script id="template-cd" type="text/x-handlebars-template">
+                    <div class="mc-playlist-item" data-genere="{{genereAlbum}}">
+                         <div class="mc-info">
+                              <p>{{titoloAlbum}}</p>
+                              <p>{{annoAlbum}}</p>
+                              <p>{{artistaAlbum}}</p>
+                         </div>
+                         <div class="mc-img-playlist">
+                              <img src="{{immagineAlbum}}" alt="">
+                         </div>
 
-    <script src="js/main.js" charset="utf-8"></script>
-  </body>
+                    </div>
+          </script>
+
+     <script src="js/main.js" charset="utf-8"></script>
+     </body>
 </html>
